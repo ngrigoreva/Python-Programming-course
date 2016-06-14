@@ -4,19 +4,30 @@ def readfile():
     fi.close()
     return f
 
-def sc_field (f):
-    #result_f = open('C:\\Курчатов_result.txt', 'w', encoding = 'utf-8')
+def funf (f):
     import re
-    regex = '([IVXL]+? век.+?(?: н. э.)?(?: до н. э.)?)'
+    regex = '([IVXL]+ (?:— |век.| н. э.| до н. э.))'
     res = re.findall(regex, f)
     for elem in res:
         a = '\n'.join(res)
     stringa = str(a)
     x = re.sub(' век.+?', '', stringa)
-    print(x)
+    x1 = re.sub(' —', '', x)
+    print(x1)
+
+#def acht(f):
+    #import re
+    #result_f = open('exam.csv', 'w', encoding = 'utf-8')
+    #regexb = '[0-1]+? [а-яА-Яё.]+? [0-9]+?'
+    #resb = re.findall(regexb, f)
+    #for elem in resb:
+     #   b = '\n'.join(resb)
+    #stringb = str(b)
+    #print(stringb)
             
 def main():
     f = readfile()
-    x = sc_field(f)
+    x = funf(f)
+    #y = acht(f)
 
 main()
